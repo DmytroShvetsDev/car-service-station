@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  <h1>
+    Vehicles List
+    <a href="{% url "service:vehicle-create" %}" class="btn btn-primary link-to-page">
+      Create
+    </a>
+  </h1>
+  {% if vehicle_list %}
+    <table class="table">
+      <tr>
+        <th>ID</th>
+        <th>Model</th>
+        <th>Brand</th>
+        <th>Year</th>
+        <th>Number</th>
+        <th>Owner</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+
+      {% for vehicle in vehicle_list %}
+        <tr>
+          <td>
+              {{ vehicle.id }}
+          </td>
+          <td>
+            <a href="{% url "service:vehicle-detail" pk=vehicle.id %}">{{ vehicle.model }}</a>
+          </td>
+          <td>
+              {{ vehicle.brand }}
+          </td>
+          <td>
+              {{ vehicle.year }}
+          </td>
+          <td>
+              {{ vehicle.vehicle_number }}
+          </td>
+          <td>
+              {{ vehicle.owner }}
+          </td>
+          <td>
+              <a href="{% url "service:vehicle-update" pk=vehicle.id %}">
+                Update
+              </a>
+            </td>
+            <td>
+              <a style="color: red"
+                href="{% url 'service:vehicle-delete' pk=vehicle.id %}">
+                Delete
+              </a>
+            </td>
+        </tr>
+      {% endfor %}
+    </table>
+
+  {% else %}
+      <p>There are no vehicle in the service.</p>
+  {% endif %}
+{% endblock %}

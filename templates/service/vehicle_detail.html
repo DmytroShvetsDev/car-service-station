@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    Model: {{ vehicle.model }} {{ vehicle.brand }}
+    <a href="{% url 'service:vehicle-delete' pk=vehicle.id %}" class="btn btn-danger link-to-page">
+      Delete
+    </a>
+
+    <a href="{% url 'service:vehicle-update' pk=vehicle.id %}" class="btn btn-secondary link-to-page">
+      Update vehicle
+    </a>
+  </h1>
+
+  <p><strong>Model:</strong> {{ vehicle.model }}</p>
+  <p><strong>Brand:</strong> {{ vehicle.brand }}</p>
+  <p><strong>Year:</strong> {{ vehicle.year }}</p>
+  <p><strong>Number:</strong> {{ vehicle.vehicle_number }}</p>
+  <p><strong>Owner:</strong> {{ vehicle.owner }}</p>
+  <h4>Task for this car</h4>
+  {% for task in vehicle.task_set.all %}
+    <li>{{ task.name }}</li>
+  {% endfor %}
+{% endblock %}
