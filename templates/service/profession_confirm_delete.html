@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Delete profession?</h1>
+  <h3>You really wont delete this profession?</h3>
+  <form action="" method="post">
+    {% csrf_token %}
+
+    <input type="submit" value="Yes" class="btn btn-danger">
+    <input type="button" value="No" onclick="history.back();" class="btn btn-secondary">
+  </form>
+{% endblock %}
