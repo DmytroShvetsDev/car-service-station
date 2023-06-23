@@ -9,7 +9,7 @@ from service.views import (
     TaskTypesListView,
     TaskTypeCreateView,
     TaskTypeUpdateView,
-    TaskTypeDeleteView,
+    TaskTypeDeleteView, VehiclesListView, VehicleCreateView, VehicleDetailView, VehicleUpdateView, VehicleDeleteView,
 
 )
 
@@ -54,6 +54,31 @@ urlpatterns = [
         "tasktypes/<int:pk>/delete/",
         TaskTypeDeleteView.as_view(),
         name="task-type-delete",
+    ),
+    path(
+        "vehicles/",
+        VehiclesListView.as_view(),
+        name="vehicles-list",
+    ),
+    path(
+        "vehicles/create/",
+        VehicleCreateView.as_view(),
+        name="vehicle-create",
+    ),
+    path(
+        "vehicles/<int:pk>/",
+        VehicleDetailView.as_view(),
+        name="vehicle-detail",
+    ),
+    path(
+        "vehicles/<int:pk>/update/",
+        VehicleUpdateView.as_view(),
+        name="vehicle-update",
+    ),
+    path(
+        "vehicles/<int:pk>/delete/",
+        VehicleDeleteView.as_view(),
+        name="vehicle-delete",
     ),
 
 ]

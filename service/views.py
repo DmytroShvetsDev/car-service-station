@@ -75,3 +75,30 @@ class TaskTypeUpdateView(LoginRequiredMixin, generic.UpdateView):
 class TaskTypeDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = TaskType
     success_url = reverse_lazy("service:tasktypes-list")
+
+
+class VehiclesListView(LoginRequiredMixin, generic.ListView):
+    model = Vehicle
+    fields = "__all__"
+    success_url = reverse_lazy("service:vehicles-list")
+
+
+class VehicleDetailView(LoginRequiredMixin, generic.DetailView):
+    model = Vehicle
+
+
+class VehicleCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Vehicle
+    fields = "__all__"
+    success_url = reverse_lazy("service:vehicles-list")
+
+
+class VehicleUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Vehicle
+    fields = "__all__"
+    success_url = reverse_lazy("service:vehicles-list")
+
+
+class VehicleDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Vehicle
+    success_url = reverse_lazy("service:vehicles-list")
