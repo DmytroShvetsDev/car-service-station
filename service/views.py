@@ -36,7 +36,7 @@ class ProfessionsListView(LoginRequiredMixin, generic.ListView):
     queryset = Profession.objects.all()
 
 
-class ProfessionsCreateView(LoginRequiredMixin, generic.CreateView):
+class ProfessionCreateView(LoginRequiredMixin, generic.CreateView):
     model = Profession
     fields = "__all__"
     success_url = reverse_lazy("service:professions-list")
@@ -51,3 +51,27 @@ class ProfessionUpdateView(LoginRequiredMixin, generic.UpdateView):
 class ProfessionDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Profession
     success_url = reverse_lazy("service:professions-list")
+
+
+class TaskTypesListView(LoginRequiredMixin, generic.ListView):
+    model = TaskType
+    context_object_name = "tasktypes_list"
+    fields = "__all__"
+    success_url = reverse_lazy("service:tasktypes-list")
+
+
+class TaskTypeCreateView(LoginRequiredMixin, generic.CreateView):
+    model = TaskType
+    fields = "__all__"
+    success_url = reverse_lazy("service:tasktypes-list")
+
+
+class TaskTypeUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = TaskType
+    fields = "__all__"
+    success_url = reverse_lazy("service:tasktypes-list")
+
+
+class TaskTypeDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = TaskType
+    success_url = reverse_lazy("service:tasktypes-list")

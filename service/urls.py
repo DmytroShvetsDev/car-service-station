@@ -1,6 +1,17 @@
 from django.urls import path
 
-from service.views import index, ProfessionsListView, ProfessionsCreateView, ProfessionUpdateView, ProfessionDeleteView
+from service.views import (
+    index,
+    ProfessionsListView,
+    ProfessionCreateView,
+    ProfessionUpdateView,
+    ProfessionDeleteView,
+    TaskTypesListView,
+    TaskTypeCreateView,
+    TaskTypeUpdateView,
+    TaskTypeDeleteView,
+
+)
 
 urlpatterns = [
     path("", index, name="index"),
@@ -11,7 +22,7 @@ urlpatterns = [
     ),
     path(
         "professions/create/",
-        ProfessionsCreateView.as_view(),
+        ProfessionCreateView.as_view(),
         name="profession-create",
     ),
     path(
@@ -23,6 +34,26 @@ urlpatterns = [
         "professions/<int:pk>/delete/",
         ProfessionDeleteView.as_view(),
         name="profession-delete",
+    ),
+    path(
+        "tasktypes/",
+        TaskTypesListView.as_view(),
+        name="tasktypes-list",
+    ),
+    path(
+        "tasktypes/create/",
+        TaskTypeCreateView.as_view(),
+        name="task-type-create",
+    ),
+    path(
+        "tasktypes/<int:pk>/update/",
+        TaskTypeUpdateView.as_view(),
+        name="task-type-update",
+    ),
+    path(
+        "tasktypes/<int:pk>/delete/",
+        TaskTypeDeleteView.as_view(),
+        name="task-type-delete",
     ),
 
 ]
