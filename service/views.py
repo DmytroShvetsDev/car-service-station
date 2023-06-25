@@ -130,3 +130,32 @@ class WorkerUpdateView(LoginRequiredMixin, generic.UpdateView):
 class WorkerDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Worker
     success_url = reverse_lazy("service:workers-list")
+
+
+class TasksListView(LoginRequiredMixin, generic.ListView):
+    model = Task
+    fields = "__all__"
+    queryset = Task.objects.all().select_related("vehicle", "task_type")
+    success_url = reverse_lazy("service:tasks-list")
+
+
+class TaskDetailView(LoginRequiredMixin, generic.DetailView):
+    model = Task
+    queryset = Task.objects.all().prefetch_related("workers__profession").select_related("task_type", "vehicle")
+
+
+class TaskCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Task
+    fields = "__all__"
+    success_url = reverse_lazy("service:tasks-list")
+
+
+class TaskUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Task
+    fields = "__all__"
+    success_url = reverse_lazy("service:tasks-list")
+
+
+class TaskDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Task
+    success_url = reverse_lazy("service:tasks-list")
