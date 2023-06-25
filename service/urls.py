@@ -9,8 +9,12 @@ from service.views import (
     TaskTypesListView,
     TaskTypeCreateView,
     TaskTypeUpdateView,
-    TaskTypeDeleteView, VehiclesListView, VehicleCreateView, VehicleDetailView, VehicleUpdateView, VehicleDeleteView,
-
+    TaskTypeDeleteView,
+    VehiclesListView,
+    VehicleCreateView,
+    VehicleDetailView,
+    VehicleUpdateView,
+    VehicleDeleteView, WorkersListView, WorkerCreateView, WorkerDetailView, WorkerUpdateView, WorkerDeleteView,
 )
 
 urlpatterns = [
@@ -80,7 +84,31 @@ urlpatterns = [
         VehicleDeleteView.as_view(),
         name="vehicle-delete",
     ),
-
+    path(
+        "workers/",
+        WorkersListView.as_view(),
+        name="workers-list",
+    ),
+    path(
+        "workers/create/",
+        WorkerCreateView.as_view(),
+        name="worker-create",
+    ),
+    path(
+        "workers/<int:pk>/",
+        WorkerDetailView.as_view(),
+        name="worker-detail",
+    ),
+    path(
+        "workers/<int:pk>/update/",
+        WorkerUpdateView.as_view(),
+        name="worker-update",
+    ),
+    path(
+        "workers/<int:pk>/delete/",
+        WorkerDeleteView.as_view(),
+        name="worker-delete",
+    ),
 ]
 
 
