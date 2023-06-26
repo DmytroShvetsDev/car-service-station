@@ -17,8 +17,12 @@
   <p><strong>Year:</strong> {{ vehicle.year }}</p>
   <p><strong>Number:</strong> {{ vehicle.vehicle_number }}</p>
   <p><strong>Owner:</strong> {{ vehicle.owner }}</p>
-  <h4>Task for this car</h4>
-  {% for task in vehicle.task_set.all %}
-    <li>{{ task.name }}</li>
-  {% endfor %}
+  <h4>Task for this car:</h4>
+  {% if vehicle.task_set.all %}
+    {% for task in vehicle.task_set.all %}
+      <li><a href="{% url "service:task-detail" pk=task.id %}">{{ task.name }}</a></li>
+    {% endfor %}
+  {% else %}
+    <p>There are no tasks for this car</p>
+  {% endif %}
 {% endblock %}
