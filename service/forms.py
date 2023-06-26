@@ -1,8 +1,9 @@
 from django import forms
+from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 
-from service.models import Worker, Vehicle
+from service.models import Worker, Vehicle, Task
 
 
 class WorkerCreationForm(UserCreationForm):
@@ -57,3 +58,14 @@ def validate_vehicle_number(
         raise ValidationError("Last 2 characters should be uppercase letters")
 
     return vehicle_number
+
+
+class TaskForm(forms.ModelForm):
+    workers = forms.ModelMultipleChoiceField(
+        queryset=get_user_model().objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+    )
+
+    class Meta:
+        model = Task
+        fields = "__all__"
