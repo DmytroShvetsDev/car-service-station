@@ -17,7 +17,21 @@
   <p><strong>Deadline:</strong> {{ task.deadline }}</p>
   <p><strong>Progress:</strong> {{ task.is_completed }}</p>
   <p><strong>Vehicle:</strong> {{ task.vehicle }}</p>
-  <p><strong>Worker: </strong>
+  <p><strong>Workers: </strong>
+  <h1>
+
+
+    {% if task in user.tasks.all %}
+      <a href="{% url "service:toggle-task-assign" pk=task.id %}" class="btn btn-danger link-to-page">
+        Delete me from this task
+      </a>
+    {% else %}
+      <a href="{% url "service:toggle-task-assign" pk=task.id %}" class="btn btn-success link-to-page">
+        Assign me from this task
+      </a>
+    {% endif %}
+
+  </h1>
     {% for worker in task.workers.all %}
       <li><a href="{% url "service:worker-detail" pk=worker.id %}">{{ worker.first_name }}</a>
         {{ worker.last_name }} ({{ worker.profession }})
