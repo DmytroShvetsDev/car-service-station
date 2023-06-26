@@ -19,7 +19,9 @@
   <p><strong>Vehicle:</strong> {{ task.vehicle }}</p>
   <p><strong>Worker: </strong>
     {% for worker in task.workers.all %}
-      <li>{{ worker.first_name }} {{ worker.last_name }} ({{ worker.profession }})</li>
+      <li><a href="{% url "service:worker-detail" pk=worker.id %}">{{ worker.first_name }}</a>
+        {{ worker.last_name }} ({{ worker.profession }})
+      </li>
     {% endfor %}
   </p>
 {% endblock %}
