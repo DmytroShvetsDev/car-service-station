@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
-from service.forms import WorkerCreationForm, WorkerUpdateForm
+from service.forms import WorkerCreationForm, WorkerUpdateForm, VehicleUpdateForm, VehicleCreateForm
 from service.models import Vehicle, Worker, Task, TaskType, Profession
 
 
@@ -90,13 +90,13 @@ class VehicleDetailView(LoginRequiredMixin, generic.DetailView):
 
 class VehicleCreateView(LoginRequiredMixin, generic.CreateView):
     model = Vehicle
-    fields = "__all__"
+    form_class = VehicleCreateForm
     success_url = reverse_lazy("service:vehicles-list")
 
 
 class VehicleUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Vehicle
-    fields = "__all__"
+    form_class = VehicleUpdateForm
     success_url = reverse_lazy("service:vehicles-list")
 
 
