@@ -3,11 +3,11 @@
 {% block content %}
   <h1>
     Worker: {{ worker.first_name }} {{ worker.last_name }}
-    <a href="{% url 'service:worker-delete' pk=worker.id %}" class="btn btn-danger link-to-page">
+    <a href="{% url "service:worker-delete" pk=worker.id %}" class="btn btn-danger link-to-page">
       Delete
     </a>
 
-    <a href="{% url 'service:worker-update' pk=worker.id %}" class="btn btn-secondary link-to-page">
+    <a href="{% url "service:worker-update" pk=worker.id %}" class="btn btn-secondary link-to-page">
       Update worker
     </a>
   </h1>
@@ -16,4 +16,12 @@
   <p><strong>First name:</strong> {{ worker.first_name }}</p>
   <p><strong>Last name:</strong> {{ worker.last_name }}</p>
   <p><strong>Profession:</strong> {{ worker.profession }}</p>
+  <p><strong>Tasks: </strong></p>
+  {% if worker.tasks.all %}
+    {% for task in worker.tasks.all %}
+      <li><a href="{% url "service:task-detail" pk=task.id %}">{{ task.name }}</a></li>
+    {% endfor %}
+  {% else %}
+    <p>There are no tasks for this worker</p>
+  {% endif %}
 {% endblock %}
