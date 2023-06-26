@@ -52,7 +52,7 @@ urlpatterns = [
     path(
         "tasktypes/",
         TaskTypesListView.as_view(),
-        name="tasktypes-list",
+        name="task-types-list",
     ),
     path(
         "tasktypes/create/",

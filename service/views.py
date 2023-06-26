@@ -57,25 +57,24 @@ class ProfessionDeleteView(LoginRequiredMixin, generic.DeleteView):
 class TaskTypesListView(LoginRequiredMixin, generic.ListView):
     model = TaskType
     context_object_name = "tasktypes_list"
-    fields = "__all__"
-    success_url = reverse_lazy("service:tasktypes-list")
+    success_url = reverse_lazy("service:task-types-list")
 
 
 class TaskTypeCreateView(LoginRequiredMixin, generic.CreateView):
     model = TaskType
     fields = "__all__"
-    success_url = reverse_lazy("service:tasktypes-list")
+    success_url = reverse_lazy("service:task-types-list")
 
 
 class TaskTypeUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = TaskType
     fields = "__all__"
-    success_url = reverse_lazy("service:tasktypes-list")
+    success_url = reverse_lazy("service:task-types-list")
 
 
 class TaskTypeDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = TaskType
-    success_url = reverse_lazy("service:tasktypes-list")
+    success_url = reverse_lazy("service:task-types-list")
 
 
 class VehiclesListView(LoginRequiredMixin, generic.ListView):
