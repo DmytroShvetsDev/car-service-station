@@ -18,6 +18,14 @@
   <p><strong>Progress:</strong> {{ task.is_completed }}</p>
   <p><strong>Vehicle:</strong> {{ task.vehicle }}</p>
   <p><strong>Workers: </strong>
+
+    {% for worker in task.workers.all %}
+      <li><a href="{% url "service:worker-detail" pk=worker.id %}">{{ worker.first_name }}</a>
+        {{ worker.last_name }} ({{ worker.profession }})
+      </li>
+    {% endfor %}
+
+  </p>
   <h1>
 
 
@@ -32,10 +40,4 @@
     {% endif %}
 
   </h1>
-    {% for worker in task.workers.all %}
-      <li><a href="{% url "service:worker-detail" pk=worker.id %}">{{ worker.first_name }}</a>
-        {{ worker.last_name }} ({{ worker.profession }})
-      </li>
-    {% endfor %}
-  </p>
 {% endblock %}
