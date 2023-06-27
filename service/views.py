@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views import generic
 
@@ -170,4 +170,12 @@ def toggle_assign_to_task(request, pk):
         worker.tasks.remove(pk)
     else:
         worker.tasks.add(pk)
+    return HttpResponseRedirect(reverse_lazy("service:task-detail", args=[pk]))
+
+
+@login_required()
+def update_task_progress(request, pk):
+    task = get_object_or_404(Task, pk=pk)
+    task.is_completed = not task.is_completed
+    task.save()
     return HttpResponseRedirect(reverse_lazy("service:task-detail", args=[pk]))

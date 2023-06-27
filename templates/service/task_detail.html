@@ -15,7 +15,19 @@
   <p><strong>Task type:</strong> {{ task.task_type }}</p>
   <p><strong>Description:</strong> {{ task.description }}</p>
   <p><strong>Deadline:</strong> {{ task.deadline }}</p>
-  <p><strong>Progress:</strong> {{ task.is_completed }}</p>
+  <p><strong>Progress:</strong> {{ task.is_completed }}
+
+  {% if task.is_completed != False %}
+    <a href="{% url "service:update-task-progress" pk=task.id %}" class="btn btn-primary link-to-page">
+      ✅
+    </a>
+  {% else %}
+    <a href="{% url "service:update-task-progress" pk=task.id %}" class="btn btn-primary link-to-page">
+      ❌
+    </a>
+  {% endif %}
+  </p>
+
   <p><strong>Vehicle:</strong> {{ task.vehicle }}</p>
   <p><strong>Workers: </strong>
 
