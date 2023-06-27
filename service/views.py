@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views import generic
 
@@ -36,6 +36,7 @@ class ProfessionsListView(LoginRequiredMixin, generic.ListView):
     context_object_name = "professions_list"
     template_name = "service/professions_list.html"
     queryset = Profession.objects.all()
+    paginate_by = 10
 
 
 class ProfessionCreateView(LoginRequiredMixin, generic.CreateView):
@@ -58,6 +59,7 @@ class ProfessionDeleteView(LoginRequiredMixin, generic.DeleteView):
 class TaskTypesListView(LoginRequiredMixin, generic.ListView):
     model = TaskType
     context_object_name = "tasktypes_list"
+    paginate_by = 10
     success_url = reverse_lazy("service:task-types-list")
 
 
@@ -81,6 +83,7 @@ class TaskTypeDeleteView(LoginRequiredMixin, generic.DeleteView):
 class VehiclesListView(LoginRequiredMixin, generic.ListView):
     model = Vehicle
     fields = "__all__"
+    paginate_by = 10
     success_url = reverse_lazy("service:vehicles-list")
 
 
@@ -108,6 +111,7 @@ class VehicleDeleteView(LoginRequiredMixin, generic.DeleteView):
 class WorkersListView(LoginRequiredMixin, generic.ListView):
     model = Worker
     fields = "__all__"
+    paginate_by = 10
     success_url = reverse_lazy("service:workers-list")
 
 
@@ -135,6 +139,7 @@ class WorkerDeleteView(LoginRequiredMixin, generic.DeleteView):
 class TasksListView(LoginRequiredMixin, generic.ListView):
     model = Task
     fields = "__all__"
+    paginate_by = 10
     queryset = Task.objects.all().select_related("vehicle", "task_type")
     success_url = reverse_lazy("service:tasks-list")
 

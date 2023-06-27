@@ -25,7 +25,8 @@ from service.views import (
     TaskDetailView,
     TaskUpdateView,
     TaskDeleteView,
-    toggle_assign_to_task, update_task_progress,
+    toggle_assign_to_task,
+    update_task_progress,
 )
 
 urlpatterns = [
@@ -150,7 +151,10 @@ urlpatterns = [
         toggle_assign_to_task,
         name="toggle-task-assign",
     ),
-    path('tasks/<int:pk>/update-progress', update_task_progress, name='update-task-progress'),
+    path('tasks/<int:pk>/update-progress',
+         update_task_progress,
+         name="update-task-progress"
+         ),
 
 ]
 
