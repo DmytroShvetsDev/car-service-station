@@ -26,7 +26,7 @@
               {{ worker.id }}
           </td>
           <td>
-            <a href="{% url "service:worker-detail" pk=worker.id %}">{{ worker.username }}</a>
+            <a href="{% url "service:worker-detail" pk=worker.id %}">{{ worker.username }} {% if user == worker %} (Me){% endif %}</a>
           </td>
           <td>
               {{ worker.profession }}
