@@ -7,12 +7,14 @@
     <a href="{% url "service:task-type-create" %}" class="btn btn-primary link-to-page">
       Create
     </a>
+    <p>{% include "includes/search.html" %}</p>
   </h1>
+
   {% if tasktypes_list %}
     <table class="table">
       <tr>
         <th>ID</th>
-        <th>Task Name</th>
+        <th>Task type</th>
         <th>Update</th>
         <th>Delete</th>
       </tr>

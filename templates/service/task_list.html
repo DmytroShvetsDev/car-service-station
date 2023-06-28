@@ -7,6 +7,7 @@
     <a href="{% url "service:task-create" %}" class="btn btn-primary link-to-page">
       Create
     </a>
+    {% include "includes/search.html" %}
   </h1>
   {% if task_list %}
     <table class="table">

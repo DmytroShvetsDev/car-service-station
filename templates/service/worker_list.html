@@ -3,11 +3,13 @@
 
 {% block content %}
   <h1>
-    Worker List
+    Workers List
     <a href="{% url "service:worker-create" %}" class="btn btn-primary link-to-page">
       Create
     </a>
+    {% include "includes/search.html" %}
   </h1>
+
   {% if worker_list %}
     <table class="table">
       <tr>
@@ -53,6 +55,6 @@
     </table>
 
   {% else %}
-      <p>There are no vehicle in the service.</p>
+      <p>There are no worker in the service.</p>
   {% endif %}
 {% endblock %}
