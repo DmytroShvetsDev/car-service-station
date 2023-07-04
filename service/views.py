@@ -15,7 +15,7 @@ from service.forms import (
     TaskTypeSearchForm,
     VehicleSearchForm,
     WorkerSearchForm,
-    TaskSearchForm
+    TaskSearchForm,
 )
 from service.models import Vehicle, Worker, Task, TaskType, Profession
 
@@ -29,7 +29,6 @@ def index(request):
     num_tasks = Task.objects.count()
     num_tasktypes = TaskType.objects.count()
     num_professions = Profession.objects.count()
-
 
     context = {
         "num_vehicles": num_vehicles,
@@ -62,9 +61,7 @@ class ProfessionsListView(LoginRequiredMixin, generic.ListView):
         form = ProfessionSearchForm(self.request.GET)
 
         if form.is_valid():
-            return self.queryset.filter(
-                name__icontains=form.cleaned_data["name"]
-            )
+            return self.queryset.filter(name__icontains=form.cleaned_data["name"])
 
         return self.queryset
 
@@ -106,9 +103,7 @@ class TaskTypesListView(LoginRequiredMixin, generic.ListView):
         form = TaskTypeSearchForm(self.request.GET)
 
         if form.is_valid():
-            return self.queryset.filter(
-                name__icontains=form.cleaned_data["name"]
-            )
+            return self.queryset.filter(name__icontains=form.cleaned_data["name"])
 
         return self.queryset
 
@@ -150,9 +145,7 @@ class VehiclesListView(LoginRequiredMixin, generic.ListView):
         form = VehicleSearchForm(self.request.GET)
 
         if form.is_valid():
-            return self.queryset.filter(
-                model__icontains=form.cleaned_data["model"]
-            )
+            return self.queryset.filter(model__icontains=form.cleaned_data["model"])
 
         return self.queryset
 
@@ -189,8 +182,7 @@ class WorkersListView(LoginRequiredMixin, generic.ListView):
 
         username = self.request.GET.get("username", "")
 
-        context["search_form"] = (WorkerSearchForm(
-            initial={"username": username}))
+        context["search_form"] = WorkerSearchForm(initial={"username": username})
 
         return context
 
@@ -246,16 +238,18 @@ class TasksListView(LoginRequiredMixin, generic.ListView):
         form = TaskTypeSearchForm(self.request.GET)
 
         if form.is_valid():
-            return self.queryset.filter(
-                name__icontains=form.cleaned_data["name"]
-            )
+            return self.queryset.filter(name__icontains=form.cleaned_data["name"])
 
         return self.queryset
 
 
 class TaskDetailView(LoginRequiredMixin, generic.DetailView):
     model = Task
-    queryset = Task.objects.all().prefetch_related("workers__profession").select_related("task_type", "vehicle")
+    queryset = (
+        Task.objects.all()
+        .prefetch_related("workers__profession")
+        .select_related("task_type", "vehicle")
+    )
 
 
 class TaskCreateView(LoginRequiredMixin, generic.CreateView):
@@ -278,9 +272,7 @@ class TaskDeleteView(LoginRequiredMixin, generic.DeleteView):
 @login_required
 def toggle_assign_to_task(request, pk):
     worker = Worker.objects.get(id=request.user.id)
-    if (
-        Task.objects.get(id=pk) in worker.tasks.all()
-    ):
+    if Task.objects.get(id=pk) in worker.tasks.all():
         worker.tasks.remove(pk)
     else:
         worker.tasks.add(pk)

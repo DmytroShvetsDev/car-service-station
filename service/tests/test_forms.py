@@ -12,7 +12,7 @@ class VehicleNumberValidationTestCase(TestCase):
             "brand": "Daewoo",
             "year": "2001",
             "vehicle_number": "XX2222YY",
-            "owner": "Petro"
+            "owner": "Petro",
         }
 
     def test_valid_vehicle_create_form(self):
@@ -26,13 +26,15 @@ class VehicleNumberValidationTestCase(TestCase):
         self.assertTrue(form.is_valid())
 
     def test_invalid_length(self):
-        form = VehicleUpdateForm(data={
-            "model": "Lanos",
-            "brand": "Daewoo",
-            "year": "2001",
-            "vehicle_number": "XX2222YYw",
-            "owner": "Petro"
-        })
+        form = VehicleUpdateForm(
+            data={
+                "model": "Lanos",
+                "brand": "Daewoo",
+                "year": "2001",
+                "vehicle_number": "XX2222YYw",
+                "owner": "Petro",
+            }
+        )
         self.assertFalse(form.is_valid())
         self.assertIn("vehicle_number", form.errors)
         self.assertEqual(
@@ -41,13 +43,15 @@ class VehicleNumberValidationTestCase(TestCase):
         )
 
     def test_invalid_first_charters(self):
-        form = VehicleUpdateForm(data={
-            "model": "Lanos",
-            "brand": "Daewoo",
-            "year": "2001",
-            "vehicle_number": "Xf2222YY",
-            "owner": "Petro"
-        })
+        form = VehicleUpdateForm(
+            data={
+                "model": "Lanos",
+                "brand": "Daewoo",
+                "year": "2001",
+                "vehicle_number": "Xf2222YY",
+                "owner": "Petro",
+            }
+        )
         self.assertFalse(form.is_valid())
         self.assertIn("vehicle_number", form.errors)
         self.assertEqual(
@@ -56,13 +60,15 @@ class VehicleNumberValidationTestCase(TestCase):
         )
 
     def test_invalid_last_charters(self):
-        form = VehicleUpdateForm(data={
-            "model": "Lanos",
-            "brand": "Daewoo",
-            "year": "2001",
-            "vehicle_number": "XR222299",
-            "owner": "Petro"
-        })
+        form = VehicleUpdateForm(
+            data={
+                "model": "Lanos",
+                "brand": "Daewoo",
+                "year": "2001",
+                "vehicle_number": "XR222299",
+                "owner": "Petro",
+            }
+        )
         self.assertFalse(form.is_valid())
         self.assertIn("vehicle_number", form.errors)
         self.assertEqual(
@@ -71,13 +77,15 @@ class VehicleNumberValidationTestCase(TestCase):
         )
 
     def test_invalid_3_to_6_charters(self):
-        form = VehicleUpdateForm(data={
-            "model": "Lanos",
-            "brand": "Daewoo",
-            "year": "2001",
-            "vehicle_number": "RRXXXXRR",
-            "owner": "Petro"
-        })
+        form = VehicleUpdateForm(
+            data={
+                "model": "Lanos",
+                "brand": "Daewoo",
+                "year": "2001",
+                "vehicle_number": "RRXXXXRR",
+                "owner": "Petro",
+            }
+        )
         self.assertFalse(form.is_valid())
         self.assertIn("vehicle_number", form.errors)
         self.assertEqual(

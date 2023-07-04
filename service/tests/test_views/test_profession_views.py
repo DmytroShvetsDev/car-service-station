@@ -16,8 +16,7 @@ class PrivateProfessionsListTest(TestCase):
 
     def setUp(self):
         self.user = get_user_model().objects.create_user(
-            username="Testuser",
-            password="Test12345"
+            username="Testuser", password="Test12345"
         )
 
         self.client.force_login(self.user)
@@ -27,10 +26,7 @@ class PrivateProfessionsListTest(TestCase):
         professions = Profession.objects.all()
 
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(
-            list(response.context["professions_list"]),
-            list(professions)
-        )
+        self.assertEqual(list(response.context["professions_list"]), list(professions))
 
     def test_search_profession(self):
         response = self.client.get(PROFESSIONS_URL, {"name": "engine"})
@@ -38,8 +34,7 @@ class PrivateProfessionsListTest(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(
-            list(response.context["professions_list"]),
-            list(search_profession)
+            list(response.context["professions_list"]), list(search_profession)
         )
 
 

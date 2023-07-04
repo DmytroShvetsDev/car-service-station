@@ -79,7 +79,7 @@ class TaskSearchForm(forms.Form):
         max_length=255,
         required=False,
         label="",
-        widget=forms.TextInput(attrs={"placeholder": "Search by task name"})
+        widget=forms.TextInput(attrs={"placeholder": "Search by task name"}),
     )
 
 
@@ -88,7 +88,7 @@ class VehicleSearchForm(forms.Form):
         max_length=255,
         required=False,
         label="",
-        widget=forms.TextInput(attrs={"placeholder": "Search by model"})
+        widget=forms.TextInput(attrs={"placeholder": "Search by model"}),
     )
 
 
@@ -97,7 +97,7 @@ class WorkerSearchForm(forms.Form):
         max_length=255,
         required=False,
         label="",
-        widget=forms.TextInput(attrs={"placeholder": "Search by username"})
+        widget=forms.TextInput(attrs={"placeholder": "Search by username"}),
     )
 
 
@@ -106,7 +106,7 @@ class TaskTypeSearchForm(forms.Form):
         max_length=255,
         required=False,
         label="",
-        widget=forms.TextInput(attrs={"placeholder": "Search by task type"})
+        widget=forms.TextInput(attrs={"placeholder": "Search by task type"}),
     )
 
 
@@ -115,5 +115,5 @@ class ProfessionSearchForm(forms.Form):
         max_length=255,
         required=False,
         label="",
-        widget=forms.TextInput(attrs={"placeholder": "Search by profession"})
+        widget=forms.TextInput(attrs={"placeholder": "Search by profession"}),
     )

@@ -25,20 +25,14 @@ class PrivateWorkerListTest(TestCase):
         workers = Worker.objects.all()
 
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(
-            list(response.context["worker_list"]),
-            list(workers)
-        )
+        self.assertEqual(list(response.context["worker_list"]), list(workers))
 
     def test_search_workers(self):
         response = self.client.get(WORKER_LIST_URL, {"username": "Bob"})
         search_worker = Worker.objects.filter(username="Bob")
 
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(
-            list(response.context["worker_list"]),
-            list(search_worker)
-        )
+        self.assertEqual(list(response.context["worker_list"]), list(search_worker))
 
 
 class PublicWorkerListTest(TestCase):

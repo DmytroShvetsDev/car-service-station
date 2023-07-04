@@ -151,11 +151,11 @@ urlpatterns = [
         toggle_assign_to_task,
         name="toggle-task-assign",
     ),
-    path('tasks/<int:pk>/update-progress',
-         update_task_progress,
-         name="update-task-progress"
-         ),
-
+    path(
+        "tasks/<int:pk>/update-progress",
+        update_task_progress,
+        name="update-task-progress",
+    ),
 ]
 
 
