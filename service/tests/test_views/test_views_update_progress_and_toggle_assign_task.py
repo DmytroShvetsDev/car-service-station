@@ -18,11 +18,15 @@ class TaskTestCase(TestCase):
         )
         self.profession = Profession.objects.create(name="Test Profession")
         self.worker = Worker.objects.create_user(
-            username="Worker1", password="Password123", profession=self.profession
+            username="Worker1",
+            password="Password123",
+            profession=self.profession
         )
         self.task_type = TaskType.objects.create(name="Test Task Type")
         self.task = Task.objects.create(
-            name="Test Task", task_type=self.task_type, vehicle=self.vehicle
+            name="Test Task",
+            task_type=self.task_type,
+            vehicle=self.vehicle
         )
 
 
@@ -38,7 +42,9 @@ class ToggleAssignToTaskTest(TaskTestCase):
         response = toggle_assign_to_task(request, self.task.pk)
 
         self.assertIn(self.task, self.worker.tasks.all())
-        self.assertEqual(response.status_code, HttpResponseRedirect.status_code)
+        self.assertEqual(
+            response.status_code, HttpResponseRedirect.status_code
+        )
         self.assertEqual(
             response.url, reverse("service:task-detail", args=[self.task.pk])
         )

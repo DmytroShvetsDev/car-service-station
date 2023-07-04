@@ -32,7 +32,10 @@ class PrivateWorkerListTest(TestCase):
         search_worker = Worker.objects.filter(username="Bob")
 
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(list(response.context["worker_list"]), list(search_worker))
+        self.assertEqual(
+            list(response.context["worker_list"]),
+            list(search_worker)
+        )
 
 
 class PublicWorkerListTest(TestCase):

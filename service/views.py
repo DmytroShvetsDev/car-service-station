@@ -61,7 +61,9 @@ class ProfessionsListView(LoginRequiredMixin, generic.ListView):
         form = ProfessionSearchForm(self.request.GET)
 
         if form.is_valid():
-            return self.queryset.filter(name__icontains=form.cleaned_data["name"])
+            return self.queryset.filter(
+                name__icontains=form.cleaned_data["name"]
+            )
 
         return self.queryset
 
@@ -103,7 +105,9 @@ class TaskTypesListView(LoginRequiredMixin, generic.ListView):
         form = TaskTypeSearchForm(self.request.GET)
 
         if form.is_valid():
-            return self.queryset.filter(name__icontains=form.cleaned_data["name"])
+            return self.queryset.filter(
+                name__icontains=form.cleaned_data["name"]
+            )
 
         return self.queryset
 
@@ -145,7 +149,9 @@ class VehiclesListView(LoginRequiredMixin, generic.ListView):
         form = VehicleSearchForm(self.request.GET)
 
         if form.is_valid():
-            return self.queryset.filter(model__icontains=form.cleaned_data["model"])
+            return self.queryset.filter(
+                model__icontains=form.cleaned_data["model"]
+            )
 
         return self.queryset
 
@@ -182,7 +188,9 @@ class WorkersListView(LoginRequiredMixin, generic.ListView):
 
         username = self.request.GET.get("username", "")
 
-        context["search_form"] = WorkerSearchForm(initial={"username": username})
+        context["search_form"] = WorkerSearchForm(
+            initial={"username": username}
+        )
 
         return context
 
@@ -238,7 +246,9 @@ class TasksListView(LoginRequiredMixin, generic.ListView):
         form = TaskTypeSearchForm(self.request.GET)
 
         if form.is_valid():
-            return self.queryset.filter(name__icontains=form.cleaned_data["name"])
+            return self.queryset.filter(
+                name__icontains=form.cleaned_data["name"]
+            )
 
         return self.queryset
 

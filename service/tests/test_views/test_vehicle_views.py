@@ -37,14 +37,20 @@ class PrivateVehiclesListTest(TestCase):
         vehicles = Vehicle.objects.all()
 
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(list(response.context["vehicle_list"]), list(vehicles))
+        self.assertEqual(
+            list(response.context["vehicle_list"]),
+            list(vehicles)
+        )
 
     def test_search_vehicle(self):
         response = self.client.get(VEHICLES_LIST_URL, {"model": "octavia"})
         search_vehicle = Vehicle.objects.filter(model="Octavia")
 
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(list(response.context["vehicle_list"]), list(search_vehicle))
+        self.assertEqual(
+            list(response.context["vehicle_list"]),
+            list(search_vehicle)
+        )
 
 
 class PublicVehicleListTest(TestCase):

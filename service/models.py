@@ -37,7 +37,9 @@ class Profession(models.Model):
 
 
 class Worker(AbstractUser):
-    profession = models.ForeignKey(Profession, on_delete=models.CASCADE, null=True)
+    profession = models.ForeignKey(
+        Profession, on_delete=models.CASCADE, null=True
+    )
 
     class Meta:
         ordering = ["first_name"]

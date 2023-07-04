@@ -25,7 +25,10 @@ class PrivateTaskTypesListTest(TestCase):
         task_types = TaskType.objects.all()
 
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(list(response.context["tasktypes_list"]), list(task_types))
+        self.assertEqual(
+            list(response.context["tasktypes_list"]),
+            list(task_types)
+        )
 
     def test_search_task_type(self):
         response = self.client.get(TASK_TYPES_LIST_URL, {"name": "oil"})

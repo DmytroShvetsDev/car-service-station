@@ -32,7 +32,9 @@ class ModelsStrTests(TestCase):
     def test_vehicle_str(self):
         self.assertEqual(
             str(self.vehicle),
-            f"{self.vehicle.model} {self.vehicle.brand} ({self.vehicle.vehicle_number})",
+            f"{self.vehicle.model} "
+            f"{self.vehicle.brand} "
+            f"({self.vehicle.vehicle_number})",
         )
 
     def test_task_type_str(self):
@@ -44,7 +46,9 @@ class ModelsStrTests(TestCase):
     def test_worker_str(self):
         self.assertEqual(
             str(self.worker),
-            f"{self.worker.first_name} {self.worker.last_name} ({self.worker.profession})",
+            f"{self.worker.first_name} "
+            f"{self.worker.last_name} "
+            f"({self.worker.profession})",
         )
 
     def test_task_str(self):

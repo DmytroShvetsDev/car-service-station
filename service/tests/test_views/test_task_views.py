@@ -1,4 +1,3 @@
-from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
 
@@ -47,7 +46,10 @@ class PrivateTaskListTest(TestCase):
         search_task = Task.objects.filter(name="New task")
 
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(list(response.context["task_list"]), list(search_task))
+        self.assertEqual(
+            list(response.context["task_list"]),
+            list(search_task)
+        )
 
 
 class PublicTaskListTest(TestCase):

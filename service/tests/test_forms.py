@@ -1,8 +1,6 @@
-from django.core.exceptions import ValidationError
 from django.test import TestCase
 
-from service.forms import validate_vehicle_number, VehicleCreateForm, VehicleUpdateForm
-from service.models import Vehicle
+from service.forms import VehicleCreateForm, VehicleUpdateForm
 
 
 class VehicleNumberValidationTestCase(TestCase):
