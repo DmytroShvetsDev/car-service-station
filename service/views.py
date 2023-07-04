@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views import generic
 
@@ -189,7 +189,7 @@ class WorkersListView(LoginRequiredMixin, generic.ListView):
 
         username = self.request.GET.get("username", "")
 
-        context["username"] = (WorkerSearchForm(
+        context["search_form"] = (WorkerSearchForm(
             initial={"username": username}))
 
         return context
@@ -292,4 +292,4 @@ def update_task_progress(request, pk):
     task = get_object_or_404(Task, pk=pk)
     task.is_completed = not task.is_completed
     task.save()
-    return HttpResponseRedirect(reverse_lazy("service:task-detail", args=[pk]))
+    return redirect("service:task-detail", pk=pk)
