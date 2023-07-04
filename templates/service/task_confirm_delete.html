@@ -1,7 +1,15 @@
 {% extends "base.html" %}
 
+{% block body %} class="background-image" {% endblock body %}
+
+{% block header %}
+
+  {% include "includes/navigation.html" %}
+
+{% endblock header %}
+
 {% block content %}
-  <h1>Delete this task?</h1>
+  <h1 style="margin-top: 80px">Delete this task?</h1>
   <h3>Do you really want to delete this task?</h3>
   <form action="" method="post">
     {% csrf_token %}

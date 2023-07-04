@@ -1,8 +1,16 @@
 {% extends "base.html" %}
 {% load crispy_forms_filters %}
 
+{% block body %} class="background-image" {% endblock body %}
+
+{% block header %}
+
+  {% include "includes/navigation.html" %}
+
+{% endblock header %}
+
 {% block content %}
-  <h1>{{ object|yesno:"Update,Create" }} profession</h1>
+  <h1 style="margin-top: 80px">{{ object|yesno:"Update,Create" }} profession</h1>
   <form action="" method="post" novalidate>
     {% csrf_token %}
     {{ form|crispy }}

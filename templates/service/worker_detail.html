@@ -1,7 +1,15 @@
 {% extends "base.html" %}
 
+{% block body %} class="background-image" {% endblock body %}
+
+{% block header %}
+
+  {% include "includes/navigation.html" %}
+
+{% endblock header %}
+
 {% block content %}
-  <h1>
+  <h1 style="margin-top: 80px">
     Worker: {{ worker.first_name }} {{ worker.last_name }}
     <a href="{% url "service:worker-delete" pk=worker.id %}" class="btn btn-danger link-to-page">
       Delete

@@ -1,15 +1,22 @@
 {% extends "base.html" %}
 {% load crispy_forms_filters %}
 
+{% block body %} class="background-image" {% endblock body %}
+
+{% block header %}
+
+  {% include "includes/navigation.html" %}
+
+{% endblock header %}
+
 {% block content %}
-  <h1>
+  <h1 style="margin-top: 80px">
     Vehicles List
     <a href="{% url "service:vehicle-create" %}" class="btn btn-primary link-to-page">
       Create
     </a>
-    {% include "includes/search.html" %}
   </h1>
-
+  {% include "includes/search.html" %}
   {% if vehicle_list %}
     <table class="table">
       <tr>
