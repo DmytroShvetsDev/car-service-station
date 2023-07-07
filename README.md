@@ -8,11 +8,11 @@ The site has the following database structure:
 
 ## Check it out!
 
-[Car-Service-Station](Link)
+[Car-Service-Station](there will be a link here)
 
 ## Installation
 
-Python 3 must be already installed
+Python 3 must be already installed!
 
 ```shell
 git clone https://github.com/dirolius/car-service-station
@@ -26,14 +26,21 @@ python manage.py runserver
 
 ## Features
 
-Authorization for the worker
-Detailed information about tasks, vehicles, and workers
-Ability to track and change task progress and deadlines
-Easy switching between vehicles and tasks for them
+ - Authorization for the worker
+ - Detailed information about tasks, vehicles, and workers
+ - Ability to track and change task progress and deadlines
+ - Easy switching between vehicles and tasks for them
 
 ## Demo
 
-You can log in to the site using the following user:
+Use the following command to load prepared data from fixture to get demo access to the system:
+
+ `python manage.py loaddata car_service_db_data.json
+`
+
+After loading data from fixture you can use following superuser (or create another one by yourself):
 
  - Login: Demo.user
  - Password: 5tgbvfr4
+
+After cloning, you need to create your `.env` file and register your variables in it. After that, everything will work. For an example, see the file `.env.sample`
