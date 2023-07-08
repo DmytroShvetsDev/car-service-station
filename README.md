@@ -36,12 +36,7 @@ For Windows, the command "touch .env" will be "echo > .env"
 
 ## Demo
 
-Use the following command to load prepared data from fixture to get demo access to the system:
-
- `python manage.py loaddata car_service_db_data.json
-`
-
-After loading data from fixture you can use following superuser (or create another one by yourself):
+You can use the following user to view the site
 
  - Login: Demo.user
  - Password: 5tgbvfr4
