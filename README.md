@@ -20,9 +20,12 @@ cd car-service-station
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
+touch .env
 python manage.py migrate
 python manage.py runserver
 ```
+For Windows, the command "touch .env" will be "echo > .env"
+#### For an example of filling out .env, see .env.sample!
 
 ## Features
 
@@ -42,5 +45,3 @@ After loading data from fixture you can use following superuser (or create anoth
 
  - Login: Demo.user
  - Password: 5tgbvfr4
-
-After cloning, you need to create your `.env` file and register your variables in it. After that, everything will work. For an example, see the file `.env.sample`
