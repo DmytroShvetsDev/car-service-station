@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
+from django.utils import timezone
 
 from service.models import Worker, Vehicle, Task
 
@@ -68,6 +69,12 @@ class TaskForm(forms.ModelForm):
     deadline = forms.DateTimeField(
         widget=forms.DateTimeInput(attrs={"type": "datetime-local"}),
     )
+
+    def clean_deadline(self):
+        deadline = self.cleaned_data.get("deadline")
+        if deadline <= timezone.now():
+            raise ValidationError("The deadline cannot be in the past")
+        return deadline
 
     class Meta:
         model = Task
