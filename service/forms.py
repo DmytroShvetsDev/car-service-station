@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.core.exceptions import ValidationError
 from django.utils import timezone
 
@@ -124,3 +124,15 @@ class ProfessionSearchForm(forms.Form):
         label="",
         widget=forms.TextInput(attrs={"placeholder": "Search by profession"}),
     )
+
+
+class UserPasswordChangeForm(PasswordChangeForm):
+    old_password = forms.CharField(max_length=50, widget=forms.PasswordInput(attrs={
+        'class': 'form-control form-control-lg', 'placeholder': 'Old Password'
+    }), label="New Password")
+    new_password1 = forms.CharField(max_length=50, widget=forms.PasswordInput(attrs={
+        'class': 'form-control form-control-lg', 'placeholder': 'New Password'
+    }), label="New Password")
+    new_password2 = forms.CharField(max_length=50, widget=forms.PasswordInput(attrs={
+        'class': 'form-control form-control-lg', 'placeholder': 'Confirm New Password'
+    }), label="Confirm New Password")

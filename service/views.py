@@ -1,9 +1,12 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import PasswordChangeView, PasswordContextMixin
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
+from django.utils.decorators import method_decorator
 from django.views import generic
+from django.views.generic import TemplateView
 
 from service.forms import (
     WorkerCreationForm,
@@ -15,7 +18,7 @@ from service.forms import (
     TaskTypeSearchForm,
     VehicleSearchForm,
     WorkerSearchForm,
-    TaskSearchForm,
+    TaskSearchForm, UserPasswordChangeForm,
 )
 from service.models import Vehicle, Worker, Task, TaskType, Profession
 
@@ -295,3 +298,17 @@ def update_task_progress(request, pk):
     task.is_completed = not task.is_completed
     task.save()
     return redirect("service:task-detail", pk=pk)
+
+
+class UserPasswordChangeView(PasswordChangeView):
+    template_name = 'accounts/password_change.html'
+    form_class = UserPasswordChangeForm
+
+
+class PasswordChangeDoneView(PasswordContextMixin, TemplateView):
+    template_name = "accounts/password_change_done.html"
+    title = "Password change successful"
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)

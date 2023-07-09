@@ -26,7 +26,7 @@ from service.views import (
     TaskUpdateView,
     TaskDeleteView,
     toggle_assign_to_task,
-    update_task_progress,
+    update_task_progress, UserPasswordChangeView, PasswordChangeDoneView,
 )
 
 urlpatterns = [
@@ -156,6 +156,14 @@ urlpatterns = [
         update_task_progress,
         name="update-task-progress",
     ),
+    path(
+        'accounts/password_change/',
+        UserPasswordChangeView.as_view(),
+        name='password_change',
+    ),
+    path('accounts/password_change/done/', PasswordChangeDoneView.as_view(
+        template_name='accounts/password_change_done.html'
+    ), name='password_change_done'),
 ]
 
 
