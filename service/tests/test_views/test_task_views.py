@@ -42,8 +42,8 @@ class PrivateTaskListTest(TestCase):
         self.assertEqual(list(response.context["task_list"]), list(tasks))
 
     def test_search_task(self):
-        response = self.client.get(TASK_LIST_URL, {"name": "new"})
-        search_task = Task.objects.filter(name="New task")
+        response = self.client.get(TASK_LIST_URL, {"name": "New"})
+        search_task = Task.objects.filter(name__icontains="new")
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(

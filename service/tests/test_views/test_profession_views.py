@@ -9,12 +9,10 @@ PROFESSIONS_URL = reverse("service:professions-list")
 
 
 class PrivateProfessionsListTest(TestCase):
-    @classmethod
-    def setUpTestData(cls):
-        Profession.objects.create(name="Engine master")
-        Profession.objects.create(name="Wheels master")
 
     def setUp(self):
+        Profession.objects.create(name="Engine master")
+        Profession.objects.create(name="Wheels master")
         self.user = get_user_model().objects.create_user(
             username="Testuser", password="Test12345"
         )
@@ -32,12 +30,13 @@ class PrivateProfessionsListTest(TestCase):
         )
 
     def test_search_profession(self):
-        response = self.client.get(PROFESSIONS_URL, {"name": "engine"})
-        search_profession = Profession.objects.filter(name="Engine master")
+        response = self.client.get(PROFESSIONS_URL, {"name": "Engine"})
+        search_profession = Profession.objects.filter(name__icontains="Engine")
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(
-            list(response.context["professions_list"]), list(search_profession)
+            list(response.context["professions_list"]),
+            list(search_profession)
         )
 
 

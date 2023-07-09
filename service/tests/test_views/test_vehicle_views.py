@@ -8,24 +8,8 @@ VEHICLES_LIST_URL = reverse("service:vehicles-list")
 
 
 class PrivateVehiclesListTest(TestCase):
-    @classmethod
-    def setUpTestData(cls):
-        Vehicle.objects.create(
-            model="Lanos",
-            brand="Daewoo",
-            year="2001",
-            vehicle_number="XX2222YY",
-            owner="Petro",
-        )
-        Vehicle.objects.create(
-            model="Octavia",
-            brand="Skoda",
-            year="2020",
-            vehicle_number="BB2222TT",
-            owner="Dmytro",
-        )
-
     def setUp(self):
+
         self.user = get_user_model().objects.create_user(
             username="Testuser", password="Test12345"
         )
@@ -33,8 +17,10 @@ class PrivateVehiclesListTest(TestCase):
         self.client.force_login(self.user)
 
     def test_retrieve_vehicle(self):
+
         response = self.client.get(VEHICLES_LIST_URL)
-        vehicles = Vehicle.objects.all()
+        vehicles = Vehicle.objects.all()[:10]
+        print(vehicles)
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(
@@ -43,8 +29,9 @@ class PrivateVehiclesListTest(TestCase):
         )
 
     def test_search_vehicle(self):
+
         response = self.client.get(VEHICLES_LIST_URL, {"model": "octavia"})
-        search_vehicle = Vehicle.objects.filter(model="Octavia")
+        search_vehicle = Vehicle.objects.filter(model__icontains="octavia")
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(

@@ -8,12 +8,10 @@ TASK_TYPES_LIST_URL = reverse("service:task-types-list")
 
 
 class PrivateTaskTypesListTest(TestCase):
-    @classmethod
-    def setUpTestData(cls):
-        TaskType.objects.create(name="Change oil")
-        TaskType.objects.create(name="Change wheels")
 
     def setUp(self):
+        self.task_type = TaskType.objects.create(name="Change oil")
+        self.task_type = TaskType.objects.create(name="Change wheels")
         self.user = get_user_model().objects.create_user(
             username="Testuser", password="Test12345"
         )
@@ -32,7 +30,7 @@ class PrivateTaskTypesListTest(TestCase):
 
     def test_search_task_type(self):
         response = self.client.get(TASK_TYPES_LIST_URL, {"name": "oil"})
-        search_task_type = TaskType.objects.filter(name="Change oil")
+        search_task_type = TaskType.objects.filter(name__icontains="oil")
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(

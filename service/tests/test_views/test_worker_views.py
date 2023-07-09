@@ -29,7 +29,7 @@ class PrivateWorkerListTest(TestCase):
 
     def test_search_workers(self):
         response = self.client.get(WORKER_LIST_URL, {"username": "Bob"})
-        search_worker = Worker.objects.filter(username="Bob")
+        search_worker = Worker.objects.filter(username__icontains="bob")
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(
