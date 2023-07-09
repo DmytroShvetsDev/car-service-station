@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block body %} class="background-image" {% endblock body %}
+
+{% block header %}
+
+  {% include "includes/navigation.html" %}
+
+{% endblock header %}
+
+{% block content %}
+  <h1 style="margin-top: 80px">Delete this vehicle?</h1>
+  <h3>Do you really want to delete this vehicle?</h3>
+  <form action="" method="post">
+    {% csrf_token %}
+
+    <input type="submit" value="Yes" class="btn btn-danger">
+    <input type="button" value="No" onclick="history.back();" class="btn btn-secondary">
+  </form>
+{% endblock %}

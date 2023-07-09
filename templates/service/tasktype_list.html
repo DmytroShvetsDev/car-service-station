@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block body %} class="background-image" {% endblock body %}
+
+{% block header %}
+
+  {% include "includes/navigation.html" %}
+
+{% endblock header %}
+
+{% block content %}
+  <h1 style="margin-top: 80px">
+    Task Types List
+    <a href="{% url "service:task-type-create" %}" class="btn btn-primary link-to-page">
+      Create
+    </a>
+  </h1>
+  {% include "includes/search.html" %}
+  {% if tasktypes_list %}
+    <table class="table">
+      <tr>
+        <th>ID</th>
+        <th>Task type</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+
+      {% for task_type in tasktypes_list %}
+        <tr>
+          <td>
+              {{ task_type.id }}
+          </td>
+          <td>
+              {{ task_type.name }}
+          </td>
+          <td>
+              <a href="{% url "service:task-type-update" pk=task_type.id %}">
+                Update
+              </a>
+            </td>
+            <td>
+              <a style="color: red"
+                href="{% url 'service:task-type-delete' pk=task_type.id %}">
+                Delete
+              </a>
+            </td>
+        </tr>
+      {% endfor %}
+    </table>
+
+  {% else %}
+      <p>There are no task type in the service.</p>
+  {% endif %}
+{% endblock %}

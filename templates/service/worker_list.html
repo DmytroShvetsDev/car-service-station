@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block body %} class="background-image" {% endblock body %}
+
+{% block header %}
+
+  {% include "includes/navigation.html" %}
+
+{% endblock header %}
+
+{% block content %}
+  <h1 style="margin-top: 80px">
+    Workers List
+    <a href="{% url "service:worker-create" %}" class="btn btn-primary link-to-page">
+      Create
+    </a>
+  </h1>
+  {% include "includes/search.html" %}
+  {% if worker_list %}
+    <table class="table">
+      <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Profession</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+
+      {% for worker in worker_list %}
+        <tr>
+          <td>
+              {{ worker.id }}
+          </td>
+          <td>
+            <a href="{% url "service:worker-detail" pk=worker.id %}">{{ worker.username }} {% if user == worker %} (Me){% endif %}</a>
+          </td>
+          <td>
+              {{ worker.profession }}
+          </td>
+          <td>
+              {{ worker.first_name }}
+          </td>
+          <td>
+              {{ worker.last_name }}
+          </td>
+          <td>
+              <a href="{% url "service:worker-update" pk=worker.id %}">
+                Update
+              </a>
+            </td>
+            <td>
+              <a style="color: red"
+                href="{% url 'service:worker-delete' pk=worker.id %}">
+                Delete
+              </a>
+            </td>
+        </tr>
+      {% endfor %}
+    </table>
+
+  {% else %}
+      <p>There are no worker in the service.</p>
+  {% endif %}
+{% endblock %}

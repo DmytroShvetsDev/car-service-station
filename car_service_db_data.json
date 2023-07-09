@@ -1,0 +1,513 @@
+[
+    {
+      "model": "service.vehicle",
+      "pk": 1,
+      "fields": {
+        "model": "Lanos",
+        "brand": "Daewoo",
+        "year": "2003",
+        "vehicle_number": "EK1234RR",
+        "owner": "Petya"
+      }
+    },
+    {
+      "model": "service.vehicle",
+      "pk": 2,
+      "fields": {
+        "model": "Golf",
+        "brand": "VW",
+        "year": "2019",
+        "vehicle_number": "RT2894RR",
+        "owner": "Dmytro"
+      }
+    },
+    {
+      "model": "service.vehicle",
+      "pk": 3,
+      "fields": {
+        "model": "Raptor",
+        "brand": "Ford",
+        "year": "2020",
+        "vehicle_number": "TH2918TH",
+        "owner": "Vova"
+      }
+    },
+    {
+      "model": "service.vehicle",
+      "pk": 4,
+      "fields": {
+        "model": "Octavia",
+        "brand": "Skoda",
+        "year": "2000",
+        "vehicle_number": "FK2915TD",
+        "owner": "Vasya"
+      }
+    },
+    {
+      "model": "service.vehicle",
+      "pk": 5,
+      "fields": {
+        "model": "Aventador",
+        "brand": "Lamborghini",
+        "year": "2020",
+        "vehicle_number": "YY0001YY",
+        "owner": "Olga"
+      }
+    },
+    {
+      "model": "service.vehicle",
+      "pk": 6,
+      "fields": {
+        "model": "e300",
+        "brand": "Mercedes",
+        "year": "2015",
+        "vehicle_number": "EK1234RT",
+        "owner": "Iryna"
+      }
+    },
+    {
+      "model": "service.vehicle",
+      "pk": 7,
+      "fields": {
+        "model": "X5",
+        "brand": "BMW",
+        "year": "1017",
+        "vehicle_number": "DC2837TT",
+        "owner": "Maryna"
+      }
+    },
+    {
+      "model": "service.vehicle",
+      "pk": 8,
+      "fields": {
+        "model": "Optima",
+        "brand": "Kia",
+        "year": "2019",
+        "vehicle_number": "DC2467RF",
+        "owner": "Illya"
+      }
+    },
+    {
+      "model": "service.vehicle",
+      "pk": 9,
+      "fields": {
+        "model": "Rx-7",
+        "brand": "Mazda",
+        "year": "1990",
+        "vehicle_number": "RR0001RR",
+        "owner": "Katya"
+      }
+    },
+    {
+      "model": "service.vehicle",
+      "pk": 10,
+      "fields": {
+        "model": "S600",
+        "brand": "Mercedes",
+        "year": "2023",
+        "vehicle_number": "YY1111YY",
+        "owner": "Artem"
+      }
+    },
+    {
+      "model": "service.vehicle",
+      "pk": 11,
+      "fields": {
+        "model": "Vito",
+        "brand": "Mercedes",
+        "year": "2004",
+        "vehicle_number": "EK1234TT",
+        "owner": "Dmytro"
+      }
+    },
+
+    {
+      "model": "service.tasktype",
+      "pk": 1,
+      "fields": {
+        "name": "Car painting"
+      }
+    },
+    {
+      "model": "service.tasktype",
+      "pk": 2,
+      "fields": {
+        "name": "Oil change"
+      }
+    },
+    {
+      "model": "service.tasktype",
+      "pk": 3,
+      "fields": {
+        "name": "Replacement of the brake"
+      }
+    },
+    {
+      "model": "service.tasktype",
+      "pk": 4,
+      "fields": {
+        "name": "Tire change"
+      }
+    },
+    {
+      "model": "service.tasktype",
+      "pk": 5,
+      "fields": {
+        "name": "Engine repair"
+      }
+    },
+    {
+      "model": "service.tasktype",
+      "pk": 6,
+      "fields": {
+        "name": "Electrical diagnostics"
+      }
+    },
+    {
+      "model": "service.tasktype",
+      "pk": 7,
+      "fields": {
+        "name": "Electrical repair"
+      }
+    },
+    {
+      "model": "service.tasktype",
+      "pk": 8,
+      "fields": {
+        "name": "Suspension repair"
+      }
+    },
+
+    {
+      "model": "service.profession",
+      "pk": 1,
+      "fields": {
+        "name": "unemployed"
+      }
+    },
+    {
+      "model": "service.profession",
+      "pk": 2,
+      "fields": {
+        "name": "Tire fitter"
+      }
+    },
+    {
+      "model": "service.profession",
+      "pk": 3,
+      "fields": {
+        "name": "Electrical engineer"
+      }
+    },
+    {
+      "model": "service.profession",
+      "pk": 4,
+      "fields": {
+        "name": "Engine master"
+      }
+    },
+    {
+      "model": "service.profession",
+      "pk": 5,
+      "fields": {
+        "name": "Break master"
+      }
+    },
+    {
+      "model": "service.profession",
+      "pk": 6,
+      "fields": {
+        "name": "Car painter"
+      }
+    },
+    {
+      "model": "service.profession",
+      "pk": 7,
+      "fields": {
+        "name": "Suspension master"
+      }
+    },
+    {
+      "model": "service.profession",
+      "pk": 8,
+      "fields": {
+        "name": "Administrator"
+      }
+    },
+
+    {
+      "model": "service.worker",
+      "pk": 2,
+      "fields": {
+        "password": "pbkdf2_sha256$600000$XjwAGBIDzYJz1lnxcGnPPN$g5NuiVZFsyM1a0pIqd6z9DkhBVt8Bz+ML+PA9R9vmcQ=",
+        "last_login": "2023-07-07T11:37:44.485Z",
+        "is_superuser": true,
+        "username": "admin.dmytro",
+        "first_name": "",
+        "last_name": "",
+        "email": "admin@dmytrro.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2023-07-07T11:32:08.681Z",
+        "profession": 1,
+        "groups": [],
+        "user_permissions": []
+      }
+    },
+    {
+      "model": "service.worker",
+      "pk": 3,
+      "fields": {
+        "password": "pbkdf2_sha256$600000$y4KH4xz7qUjZ5gcydVAbcF$YfKAJuaaOoOErSSJR98LEOukFFv36zNm2c3F59q8Luk=",
+        "last_login": "2023-07-07T11:37:10.891Z",
+        "is_superuser": false,
+        "username": "Demo.user",
+        "first_name": "Demo",
+        "last_name": "User",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2023-07-07T11:36:44.637Z",
+        "profession": 1,
+        "groups": [],
+        "user_permissions": []
+      }
+    },
+    {
+      "model": "service.worker",
+      "pk": 4,
+      "fields": {
+        "password": "pbkdf2_sha256$600000$2rSJQ0OkqXvUTpJGZF6vmx$+e5k3REpNuIRKP9kuV3u6UxblLqNs1YxPL/7OUvugQE=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "petrokuts",
+        "first_name": "Petro",
+        "last_name": "Kuts",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2023-07-07T12:27:50.213Z",
+        "profession": 5,
+        "groups": [],
+        "user_permissions": []
+      }
+    },
+    {
+      "model": "service.worker",
+      "pk": 5,
+      "fields": {
+        "password": "pbkdf2_sha256$600000$qtVSEGZBd4j8DRU7YhPAbw$b/PcUng0S3Y+yG7zFoxzJ5cxIBWNKDT3Ps14awZw+mo=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "glebchorniy",
+        "first_name": "Gleb",
+        "last_name": "Chorniy",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2023-07-07T12:28:45.943Z",
+        "profession": 6,
+        "groups": [],
+        "user_permissions": []
+      }
+    },
+    {
+      "model": "service.worker",
+      "pk": 6,
+      "fields": {
+        "password": "pbkdf2_sha256$600000$R8zyDGhS6Gnakejbvc9din$OBsstnhDuBrcVqS/9VHRBujGObBAchBn3VG/ATQRSsM=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "mykytahrushch",
+        "first_name": "Mykyta",
+        "last_name": "Hrushch",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2023-07-07T12:29:34.521Z",
+        "profession": 3,
+        "groups": [],
+        "user_permissions": []
+      }
+    },
+    {
+      "model": "service.worker",
+      "pk": 7,
+      "fields": {
+        "password": "pbkdf2_sha256$600000$cqxazYnJj8keNziwGlKuOM$CL4aEMuXFY8/U8Zf98ZxR7UC/8tjJJlvNSiccs4rRGI=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "vovabolt",
+        "first_name": "Volodymyr",
+        "last_name": "Bolt",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2023-07-07T12:30:26.641Z",
+        "profession": 4,
+        "groups": [],
+        "user_permissions": []
+      }
+    },
+    {
+      "model": "service.worker",
+      "pk": 8,
+      "fields": {
+        "password": "pbkdf2_sha256$600000$XxlrbQICWMJnfaiScxFYZH$odAkxIWmJUKIg4NPYTwc8/eGmIRCnwqHI1nQ+vVe0iA=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "andriisom",
+        "first_name": "Andrii",
+        "last_name": "Som",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2023-07-07T12:31:14.350Z",
+        "profession": 2,
+        "groups": [],
+        "user_permissions": []
+      }
+    },
+    {
+      "model": "service.worker",
+      "pk": 9,
+      "fields": {
+        "password": "pbkdf2_sha256$600000$1AgjbGPCIMdeYonnBRYZw8$blf7CIIDeDQNq7TTu9zYlVqHh88lykFKdjtIJZOTUgQ=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "igorkrot",
+        "first_name": "Igor",
+        "last_name": "Krot",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2023-07-07T12:36:12.934Z",
+        "profession": 7,
+        "groups": [],
+        "user_permissions": []
+      }
+    },
+
+    {
+      "model": "service.task",
+      "pk": 1,
+      "fields": {
+        "name": "Oil change",
+        "description": "change motor oil",
+        "deadline": "2023-07-07T15:46:00Z",
+        "is_completed": false,
+        "vehicle": 2,
+        "task_type": 2,
+        "workers": [
+          7
+        ]
+      }
+    },
+    {
+      "model": "service.task",
+      "pk": 2,
+      "fields": {
+        "name": "Change brakes",
+        "description": "change brakes",
+        "deadline": "2023-07-09T17:00:00Z",
+        "is_completed": false,
+        "vehicle": 7,
+        "task_type": 3,
+        "workers": [
+          4
+        ]
+      }
+    },
+    {
+      "model": "service.task",
+      "pk": 3,
+      "fields": {
+        "name": "Car painting",
+        "description": "painting of the rear bumper",
+        "deadline": "2023-07-30T17:48:00Z",
+        "is_completed": false,
+        "vehicle": 6,
+        "task_type": 1,
+        "workers": [
+          5
+        ]
+      }
+    },
+    {
+      "model": "service.task",
+      "pk": 4,
+      "fields": {
+        "name": "Car painting",
+        "description": "painting the front bumper in black",
+        "deadline": "2023-07-07T15:50:00Z",
+        "is_completed": false,
+        "vehicle": 11,
+        "task_type": 1,
+        "workers": [
+          5
+        ]
+      }
+    },
+    {
+      "model": "service.task",
+      "pk": 5,
+      "fields": {
+        "name": "car painting",
+        "description": "car painting",
+        "deadline": "2023-07-15T12:00:00Z",
+        "is_completed": false,
+        "vehicle": 5,
+        "task_type": 1,
+        "workers": [
+          6
+        ]
+      }
+    },
+    {
+      "model": "service.task",
+      "pk": 6,
+      "fields": {
+        "name": "Replacement of tires",
+        "description": "replace all four tires",
+        "deadline": "2023-07-12T09:30:00Z",
+        "is_completed": false,
+        "vehicle": 4,
+        "task_type": 4,
+        "workers": [
+          8
+        ]
+      }
+    },
+    {
+      "model": "service.task",
+      "pk": 7,
+      "fields": {
+        "name": "Engine repair",
+        "description": "repair of the engine",
+        "deadline": "2023-08-05T16:00:00Z",
+        "is_completed": false,
+        "vehicle": 9,
+        "task_type": 5,
+        "workers": [
+          7,
+          9
+        ]
+      }
+    },
+    {
+      "model": "service.task",
+      "pk": 8,
+      "fields": {
+        "name": "Suspension repair",
+        "description": "repair of the suspension system",
+        "deadline": "2023-07-20T14:30:00Z",
+        "is_completed": false,
+        "vehicle": 10,
+        "task_type": 8,
+        "workers": [
+          9
+        ]
+      }
+    }
+  ]
+

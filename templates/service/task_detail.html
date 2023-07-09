@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block body %} class="background-image" {% endblock body %}
+
+{% block header %}
+
+  {% include "includes/navigation.html" %}
+
+{% endblock header %}
+
+{% block content %}
+  <h1 style="margin-top: 80px">
+    Task: {{ task.name }}
+    <a href="{% url 'service:task-delete' pk=task.id %}" class="btn btn-danger link-to-page">
+      Delete
+    </a>
+
+    <a href="{% url 'service:task-update' pk=task.id %}" class="btn btn-secondary link-to-page">
+      Update task
+    </a>
+  </h1>
+
+  <p><strong>Task type:</strong> {{ task.task_type }}</p>
+  <p><strong>Description:</strong> {{ task.description }}</p>
+  <p><strong>Deadline:</strong> {{ task.deadline }}</p>
+  <p><strong>Progress:</strong> {{ task.is_completed }}
+
+  {% if task.is_completed != False %}
+    <a href="{% url "service:update-task-progress" pk=task.id %}" class="btn btn-success link-to-page">
+      ✅
+    </a>
+  {% else %}
+    <a href="{% url "service:update-task-progress" pk=task.id %}" class="btn btn-warning link-to-page">
+      ❌
+    </a>
+  {% endif %}
+  </p>
+
+  <p><strong>Vehicle:</strong> {{ task.vehicle }}</p>
+  <p><strong>Workers: </strong>
+
+    {% for worker in task.workers.all %}
+      <li><a href="{% url "service:worker-detail" pk=worker.id %}">{{ worker.first_name }}</a>
+        {{ worker.last_name }} ({{ worker.profession }})
+      </li>
+    {% endfor %}
+
+  </p>
+  <h1>
+
+
+    {% if task in user.tasks.all %}
+      <a href="{% url "service:toggle-task-assign" pk=task.id %}" class="btn btn-warning link-to-page">
+        Delete me from this task
+      </a>
+    {% else %}
+      <a href="{% url "service:toggle-task-assign" pk=task.id %}" class="btn btn-success link-to-page">
+        Assign me from this task
+      </a>
+    {% endif %}
+
+  </h1>
+{% endblock %}

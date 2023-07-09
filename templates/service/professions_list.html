@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block body %} class="background-image" {% endblock body %}
+
+{% block header %}
+
+  {% include "includes/navigation.html" %}
+
+{% endblock header %}
+
+{% block content %}
+  <h1 style="margin-top: 80px">
+    Professions List
+    <a href="{% url "service:profession-create" %}" class="btn btn-primary link-to-page">
+      Create
+    </a>
+  </h1>
+  {% include "includes/search.html" %}
+  {% if professions_list %}
+    <table class="table">
+      <tr>
+        <th>ID</th>
+        <th>Profession</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+
+      {% for professions in professions_list %}
+        <tr>
+          <td>
+              {{ professions.id }}
+          </td>
+          <td>
+              {{ professions.name }}
+          </td>
+          <td>
+              <a href="{% url "service:profession-update" pk=professions.id %}">
+                Update
+              </a>
+            </td>
+            <td>
+              <a style="color: red"
+                href="{% url 'service:profession-delete' pk=professions.id %}">
+                Delete
+              </a>
+            </td>
+        </tr>
+      {% endfor %}
+    </table>
+
+  {% else %}
+      <p>There are no professions in the service.</p>
+  {% endif %}
+{% endblock %}
